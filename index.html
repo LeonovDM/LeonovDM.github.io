@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY RESUME</title>
+    <style>
+        h1 {
+        color: #ebebeb;
+        border: 1px solid black;
+        text-shadow:5px 5px rgb(42, 56, 36);
+        }
+        p {
+         color: #ebebeb; /* Цвет текста */
+         font-size: 20px;
+        }
+
+       .body_cl {
+            font-family: Arial, sans-serif;
+            color: #ebebeb;
+        }
+       .MinMax-container {
+            font-family: Arial, sans-serif;
+            background-color: rgb(255, 255, 255);
+            color: #080808;
+            border: 1px solid black;
+        }
+        .NameChange-container {
+            font-family: Arial, sans-serif;
+            background-color: rgb(5, 1, 248);
+            color: #ebebeb;
+            border: 1px solid black;
+        }
+        .scripts-container {
+            font-family: Arial, sans-serif;
+            background-color: rgb(156, 4, 4);
+            color: #ebebeb;
+            border: 1px solid black;
+        }
+        .image-container img {
+            display: block; /* Убираем лишние отступы */
+        }
+
+        .resume-details  {
+            color: transparent;
+            font-size: 50px;
+            margin-bottom: 10px;
+            font-style: italic;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            background-image: linear-gradient(to right, #ffffff 0%, #0000ff 25%, #ff0000 40%);
+            background-clip: text;
+        }
+    </style>
+</head>
+
+
+<body class = "body_cl" background="shaman.jpg">
+    
+    
+    <p align = "center" class="resume-details">Welcome to my page!</p>
+    
+
+    <p align="center" style="color: rgb(255, 255, 255)"> Welcome to my page, this is the page with my resume. </p>
+    <p align="center" style="color: rgb(5, 1, 248)"> My name is Leonov Danila, I study at Stankin Moscow State Technical University</p>
+    <p align="center" style="color: rgb(156, 4, 4)"> Group ADB-21-06.</p>
+
+        <hr>
+        <div class="image-container" align="center">
+            <img src="gerb.jpg" alt="Your image" width="200" height="200">
+        </div>
+        <hr>
+
+    <div>
+        <h2>About me:</h2>
+        <p><i>PATRIOT</i></p>
+        <p><i>C++ enjoer</i></p>
+    </div>
+
+    <div>
+        <h2>Links:</h2>
+        <p>Social network: <a href="https://vk.com/danila.leonov">Моя страница VK</a></p>
+        <p>Repos: <a href="https://github.com/LeonovDM">Мой GitHub</a></p>
+    </div>
+
+    <div class ="MinMax-container">
+        <br>
+    <label for="num1">Number 1:</label>
+    <input type="text" id="num1"><br><br>
+    <label for="num2">Number 2:</label>
+    <input type="text" id="num2"><br><br>
+    <button onclick="areEqual()">Check</button>
+    <button onclick="findMin()">Find minimum</button>
+    <button onclick="findMax()">Find maximum</button><br>
+    <div id="result"></div>
+    <br>
+    </div>
+
+
+    <!-------------------------------------- // Scripts for min/max or eqal -->
+    <script>
+        function areEqual() {
+            // Получаем значения из полей ввода
+            var num1 = document.getElementById("num1").value;
+            var num2 = document.getElementById("num2").value;
+
+            // Проверяем, равны ли числа
+            var result = num1 === num2;
+
+            // Отображаем результат в окошке
+            document.getElementById("result").innerText = result ? "Numbers are equal" : "Numbers are not equal";
+        }
+
+        function findMin() {
+            // Получаем значения из полей ввода
+            var num1 = parseFloat(document.getElementById("num1").value);
+            var num2 = parseFloat(document.getElementById("num2").value);
+
+            // Находим минимум двух чисел
+            var min = num1 < num2 ? num1 : num2;
+
+            // Отображаем результат в окошке
+            document.getElementById("result").innerText = "Minimum: " + min;
+        }
+
+        function findMax() {
+            // Получаем значения из полей ввода
+            var num1 = parseFloat(document.getElementById("num1").value);
+            var num2 = parseFloat(document.getElementById("num2").value);
+
+            // Находим максимум двух чисел
+            var max = num1 > num2 ? num1 : num2;
+
+            // Отображаем результат в окошке
+            document.getElementById("result").innerText = "Maximum: " + max;
+        }
+    </script>
+
+    <div class ="NameChange-container">
+        <input type="text" id="newSurname" placeholder="Enter new Surname">
+        <button onclick="changeSurname()">Change Surname</button>
+        <p>Current Surname: <span id="surname">Leonov</span></p>
+        <br>
+        <br>
+        <br>
+    </div>
+
+    <script>
+        function changeSurname() {
+            var newSurname = document.getElementById("newSurname").value;
+            document.getElementById("surname").innerText = newSurname;
+        }
+    </script>
+
+
+
+
+<!----------------------------------------- // Scripts for questions -->
+<div class="scripts-container">
+    <p>Scripts:</p>
+    <button onclick="askName()">Ask name</button>
+    <button onclick="askAge()">Ask вsurname</button>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>
+
+    <script>
+        function askName() {
+            if (confirm('Good afternoon, this page has a question for you, are you ready to answer?')){
+            var name = prompt('What is your name?','Enter your name here');
+            var admin = name;
+            alert("Your name - "+admin)
+            }
+            alert("Thank you for taking the time")
+        }
+    </script>
+
+    <script>
+        function askAge() {
+            if (confirm('Good afternoon, this page has a question for you, are you ready to answer?')) {
+            while (true) {
+                    var age = prompt('What is your age?');
+                    if (confirm("Your age is  " + age + " ?")) {
+                        alert("Thank you for taking the time")
+                        break
+                    }
+                    else {
+                        alert("You have clicked the cancel button")
+                    }
+                }
+            }
+        }
+    </script>
+        <hr>
+<!----------------------------------------- // Scripts for questions -->
+
+
+
+</body>
+</html>
