@@ -19,6 +19,7 @@
        .body_cl {
             font-family: Arial, sans-serif;
             color: #ebebeb;
+            background-repeat: no-repeat;
         }
        .MinMax-container {
             font-family: Arial, sans-serif;
@@ -51,6 +52,39 @@
             background-image: linear-gradient(to right, #ffffff 0%, #0000ff 25%, #ff0000 40%);
             background-clip: text;
         }
+
+        .hover-text {
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        /* Изменение цвета текста при наведении */
+        .hover-text:hover { 
+            color: blue;
+        }
+    </style>
+    
+    <style>
+        #indicator {
+            width: 270px;
+        }
+
+        #indicator::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background-color: #a84caf;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        #indicator::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 10px;
+            background: #ddd;
+            border: none;
+            border-radius: 3px;
+        }
     </style>
 </head>
 
@@ -77,10 +111,21 @@
         <p><i>C++ enjoer</i></p>
     </div>
 
+    <!-- Audio Element -->
+    <audio id="backgroundMusic" src="music.mp3"></audio>
+    <button id="playMusicBtn">Play Music</button>
+
+    <script>
+    document.getElementById('playMusicBtn').addEventListener('click', function() {
+        document.getElementById('backgroundMusic').play();
+    });
+    </script>
+ 
+
     <div>
         <h2>Links:</h2>
-        <p>Social network: <a href="https://vk.com/danila.leonov">Моя страница VK</a></p>
-        <p>Repos: <a href="https://github.com/LeonovDM">Мой GitHub</a></p>
+        <p class = "hover-text">Social network: <a href="https://vk.com/danila.leonov">Моя страница VK</a></p>
+        <p class = "hover-text">Repos: <a href="https://github.com/LeonovDM">Мой GitHub</a></p>
     </div>
 
     <div class ="MinMax-container">
@@ -159,7 +204,7 @@
 <div class="scripts-container">
     <p>Scripts:</p>
     <button onclick="askName()">Ask name</button>
-    <button onclick="askAge()">Ask вsurname</button>
+    <button onclick="askAge()">Ask age</button>
     <br>
     <br>
     <br>
@@ -194,8 +239,53 @@
         }
     </script>
         <hr>
-<!----------------------------------------- // Scripts for questions -->
+            <!----------------------------------------- // Individual task -->
+        <div align ="center">
+        <input type="range" id="indicator" min="0" max="9" value="0">
+            <br><br>
+            <button onclick="setNumber(0)">0</button>
+            <button onclick="setNumber(1)">1</button>
+            <button onclick="setNumber(2)">2</button>
+            <button onclick="setNumber(3)">3</button>
+            <button onclick="setNumber(4)">4</button>
+            <button onclick="setNumber(5)">5</button>
+            <button onclick="setNumber(6)">6</button>
+            <button onclick="setNumber(7)">7</button>
+            <button onclick="setNumber(8)">8</button>
+            <button onclick="setNumber(9)">9</button>
+        <script>
+            var indicator = document.getElementById("indicator");
+    
+            function setNumber(num) {
+                indicator.value = num;
+                checkValue(num);
+                // Явно вызываем событие input
+                indicator.dispatchEvent(new Event('input'));
+            }
+            
+            function getRandomColor() {
+                var letters = '0123456789ABCDEF'
+                var color = '#'
+                for (var i=0;i<6;i++) {
+                    color += letters[Math.floor(Math.random()* 16)];
+                }
+                return color;
+            }
 
+            function checkValue(num) {
+                if (num >= 3) {
+                    document.body.style.backgroundColor = getRandomColor();
+                } else {
+                    document.body.style.backgroundColor = '#2b2929';
+                }
+            }
+    
+            indicator.addEventListener("input", function() {
+                checkValue(this.value);
+            });
+
+        </script>
+        </div>
 
 
 </body>
